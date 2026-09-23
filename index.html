@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday! 🎂✨</title>
+    <title>Advance Happy Birthday! 🎂✨</title>
     <!-- Tailwind CSS for modern styling -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Canvas Confetti library -->
@@ -54,63 +54,84 @@
 </head>
 <body class="flex flex-col items-center justify-center p-4 relative">
 
-    <!-- Background Floating Balloons Generated via JS -->
     <div id="balloon-container" class="absolute inset-0 pointer-events-none overflow-hidden"></div>
 
-    <!-- Main Card Container -->
-    <div class="relative z-10 max-w-lg w-full bg-white/80 backdrop-blur-md rounded-3xl shadow-2xl p-8 text-center border border-white/50 my-8">
+    <div class="relative z-10 max-w-lg w-full bg-white/85 backdrop-blur-md rounded-3xl shadow-2xl p-6 md:p-8 text-center border border-white/50 my-6">
         
-        <!-- Header / Emoji Badge -->
-        <div class="inline-block bg-pink-100 text-pink-600 px-4 py-1.5 rounded-full text-sm font-semibold mb-4 shadow-sm">
-            🎉 A Special Day for a Special Person 🎉
+        <!-- Header / Advance Badge -->
+        <div class="inline-block bg-gradient-to-r from-pink-500 to-rose-500 text-white px-5 py-1.5 rounded-full text-sm font-semibold mb-4 shadow-md animate-pulse">
+            ✨ Advance Happy Birthday! 🎉
         </div>
 
         <!-- Main Title -->
-        <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-2">
-            Happy Birthday <span class="script-font text-pink-600 text-6xl block">Bestie! ✨</span>
+        <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-1">
+            Counting down to your special day, <span class="script-font text-pink-600 text-5xl block">Bestie! 💖</span>
         </h1>
 
-        <!-- Cute Illustration or GIF / Emoji icon -->
-        <div class="my-6 flex justify-center items-center">
-            <div class="w-28 h-28 bg-pink-50 rounded-full flex items-center justify-center text-6xl shadow-inner floating">
-                🧸💖
+        <!-- Countdown Timer Section -->
+        <div class="my-6 bg-pink-50/80 border border-pink-100 rounded-2xl p-4 shadow-sm">
+            <p class="text-xs font-semibold uppercase tracking-wider text-pink-600 mb-3">Time Left Until September 29, 2026 ⏳</p>
+            <div class="grid grid-cols-4 gap-2 text-center">
+                <div class="bg-white p-2 rounded-xl shadow-sm border border-pink-100">
+                    <span id="days" class="text-2xl font-bold text-gray-800 block">00</span>
+                    <span class="text-[10px] text-gray-500 uppercase font-medium">Days</span>
+                </div>
+                <div class="bg-white p-2 rounded-xl shadow-sm border border-pink-100">
+                    <span id="hours" class="text-2xl font-bold text-gray-800 block">00</span>
+                    <span class="text-[10px] text-gray-500 uppercase font-medium">Hours</span>
+                </div>
+                <div class="bg-white p-2 rounded-xl shadow-sm border border-pink-100">
+                    <span id="minutes" class="text-2xl font-bold text-gray-800 block">00</span>
+                    <span class="text-[10px] text-gray-500 uppercase font-medium">Mins</span>
+                </div>
+                <div class="bg-white p-2 rounded-xl shadow-sm border border-pink-100">
+                    <span id="seconds" class="text-2xl font-bold text-gray-800 block">00</span>
+                    <span class="text-[10px] text-gray-500 uppercase font-medium">Secs</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cute Illustration / Emoji icon -->
+        <div class="my-4 flex justify-center items-center">
+            <div class="w-24 h-24 bg-pink-50 rounded-full flex items-center justify-center text-5xl shadow-inner floating">
+                🧸✨
             </div>
         </div>
 
         <!-- Emotional / Cute Note -->
-        <div class="bg-pink-50/70 p-5 rounded-2xl border border-pink-100 text-gray-700 text-sm md:text-base leading-relaxed mb-8 shadow-sm">
-            <p class="font-semibold text-pink-600 mb-1">A Little Note For You:</p>
-            "I just wanted to remind you how much joy, laughter, and brightness you bring into everyone's life around you. Thank you for being such an incredible person. Sorry for all my silly mistakes and arguments, but you know you mean the absolute world to me! Have the sweetest birthday ever! 🥳🎂"
+        <div class="bg-pink-50/70 p-4 rounded-2xl border border-pink-100 text-gray-700 text-sm md:text-base leading-relaxed mb-6 shadow-sm text-left">
+            <p class="font-semibold text-pink-600 mb-1 text-center">A Little Advance Note For You 💌</p>
+            "I just couldn't wait until the 29th to start celebrating you! Thank you for bringing so much brightness, laughter, and joy into my life. Sorry for all my silly mistakes and arguments, but you truly mean the absolute world to me. Get ready for the best birthday ever! 🥳🎈"
         </div>
 
         <!-- Interactive Question Section -->
-        <div class="mb-6">
-            <h2 class="text-xl font-bold text-gray-800 mb-4" id="question-text">
-                Do you forgive me for all my naughtiness &amp; love my surprise? 🥰
+        <div class="mb-4">
+            <h2 class="text-lg font-bold text-gray-800 mb-4" id="question-text">
+                Are you excited for your surprise &amp; ready to forgive me? 🥰
             </h2>
             
             <div id="btn-group" class="flex items-center justify-center gap-4 relative h-16">
                 <!-- Yes Button -->
-                <button id="yes-btn" onclick="celebrateSuccess()" class="bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transform transition hover:scale-105 active:scale-95 cursor-pointer">
+                <button id="yes-btn" onclick="celebrateSuccess()" class="bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transform transition hover:scale-105 active:scale-95 cursor-pointer z-10">
                     YES, Absolutely! 💖
                 </button>
 
                 <!-- No Button (Playfully dodges!) -->
-                <button id="no-btn" onmouseover="moveButton()" ontouchstart="moveButton()" class="bg-gray-200 hover:bg-gray-300 text-gray-700 font-bold py-3 px-8 rounded-full shadow transition cursor-pointer absolute right-8">
+                <button id="no-btn" onmouseover="moveButton()" ontouchstart="moveButton()" class="bg-gray-200 hover:bg-gray-300 text-gray-700 font-bold py-3 px-8 rounded-full shadow transition cursor-pointer absolute right-4 z-10">
                     No 🙈
                 </button>
             </div>
         </div>
 
         <!-- Success Message Hidden Box -->
-        <div id="success-box" class="hidden mt-6 p-4 bg-emerald-50 border border-emerald-200 text-emerald-800 rounded-2xl animate-bounce">
+        <div id="success-box" class="hidden mt-4 p-4 bg-emerald-50 border border-emerald-200 text-emerald-800 rounded-2xl animate-bounce">
             <p class="font-bold text-lg">Yay! Best decision ever! 🎉✨</p>
-            <p class="text-sm">Sending you virtual hugs and unlimited treats! 🍰🎈</p>
+            <p class="text-sm">Advance birthday hugs and virtual treats unlocked! 🍰🎈</p>
         </div>
 
         <!-- Audio toggle button -->
-        <div class="mt-6 pt-4 border-t border-gray-200 flex justify-center items-center gap-3">
-            <button onclick="toggleMusic()" id="music-btn" class="text-xs bg-gray-100 hover:bg-gray-200 text-gray-600 px-4 py-2 rounded-full font-medium transition flex items-center gap-2">
+        <div class="mt-4 pt-3 border-t border-gray-200 flex justify-center items-center gap-3">
+            <button onclick="toggleMusic()" id="music-btn" class="text-xs bg-gray-100 hover:bg-gray-200 text-gray-600 px-4 py-2 rounded-full font-medium transition flex items-center gap-2 cursor-pointer">
                 🎵 Play Celebration Sound
             </button>
         </div>
@@ -118,22 +139,19 @@
     </div>
 
     <script>
-        // Array of pleasant soft pastel balloon colors
         const colors = ['#f43f5e', '#ec4899', '#d946ef', '#8b5cf6', '#3b82f6', '#10b981', '#f59e0b'];
         const container = document.getElementById('balloon-container');
 
-        // Create floating background balloons dynamically
         function createBalloon() {
             const balloon = document.createElement('div');
             balloon.classList.add('balloon');
             const color = colors[Math.floor(Math.random() * colors.length)];
             balloon.style.backgroundColor = color;
             
-            // Random positioning and sizes
             const leftPos = Math.random() * 100;
             balloon.style.left = leftPos + 'vw';
             
-            const animDuration = Math.random() * 5 + 7; // Between 7s to 12s
+            const animDuration = Math.random() * 5 + 7;
             balloon.style.animationDuration = animDuration + 's';
             
             const sizeScale = Math.random() * 0.4 + 0.8;
@@ -141,16 +159,40 @@
 
             container.appendChild(balloon);
 
-            // Remove balloon element after animation finishes to prevent clutter
             setTimeout(() => {
                 balloon.remove();
             }, animDuration * 1000);
         }
 
-        // Spawn balloons periodically
         setInterval(createBalloon, 800);
 
-        // Playful No button evasion logic
+        const targetDate = new Date("September 29, 2026 00:00:00").getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const difference = targetDate - now;
+
+            if (difference > 0) {
+                const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+                document.getElementById('days').innerText = String(days).padStart(2, '0');
+                document.getElementById('hours').innerText = String(hours).padStart(2, '0');
+                document.getElementById('minutes').innerText = String(minutes).padStart(2, '0');
+                document.getElementById('seconds').innerText = String(seconds).padStart(2, '0');
+            } else {
+                document.getElementById('days').innerText = "00";
+                document.getElementById('hours').innerText = "00";
+                document.getElementById('minutes').innerText = "00";
+                document.getElementById('seconds').innerText = "00";
+            }
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
         let dodgeCount = 0;
         const noMessages = ["No 🙈", "Are you sure? 🥺", "Think again! 💭", "Pretty please? 🌸", "Don't click this! 🚫", "You have no choice! 😉"];
         
@@ -158,9 +200,8 @@
             const noBtn = document.getElementById('no-btn');
             const btnGroup = document.getElementById('btn-group');
             
-            // Calculate random offset within bounds
             const maxX = btnGroup.clientWidth - noBtn.clientWidth - 20;
-            const maxY = 80;
+            const maxY = 60;
             
             const randomX = Math.random() * maxX - (maxX / 2);
             const randomY = (Math.random() - 0.5) * maxY;
@@ -171,23 +212,17 @@
             noBtn.innerText = noMessages[dodgeCount];
         }
 
-        // Celebrate success action when 'Yes' is clicked
         function celebrateSuccess() {
-            // Trigger confetti explosion
             confetti({
                 particleCount: 150,
                 spread: 80,
                 origin: { y: 0.6 }
             });
 
-            // Show success message container
             document.getElementById('success-box').classList.remove('hidden');
-            document.getElementById('question-text').innerText = "Thank you for being my favorite person! ❤️";
-            
-            // Hide the button group to finalize
+            document.getElementById('question-text').innerText = "Yay! You are the absolute best! ❤️";
             document.getElementById('btn-group').style.display = 'none';
 
-            // Extra continuous confetti bursts
             setTimeout(() => {
                 confetti({
                     particleCount: 100,
@@ -206,7 +241,6 @@
             }, 400);
         }
 
-        // Web Audio API simple happy chime sound generator (No external audio file dependency)
         let audioCtx = null;
         function playChime() {
             if (!audioCtx) {
@@ -216,7 +250,7 @@
                 audioCtx.resume();
             }
 
-            const notes = [261.63, 293.66, 329.63, 349.23, 392.00, 440.00, 493.88, 523.25]; // C major scale
+            const notes = [261.63, 293.66, 329.63, 349.23, 392.00, 440.00, 493.88, 523.25];
             notes.forEach((freq, index) => {
                 setTimeout(() => {
                     const osc = audioCtx.createOscillator();
@@ -236,7 +270,6 @@
             });
         }
 
-        let musicPlaying = false;
         function toggleMusic() {
             const musicBtn = document.getElementById('music-btn');
             playChime();
@@ -246,7 +279,6 @@
             }, 2500);
         }
 
-        // Initial welcome confetti blast
         window.onload = function() {
             setTimeout(() => {
                 confetti({
