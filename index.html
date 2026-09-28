@@ -1,131 +1,183 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday My Friend! 🎉</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(15px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .animate-fadeIn {
-            animation: fadeIn 0.5s ease-out forwards;
-        }
-    </style>
-</head>
-<body class="min-h-screen bg-slate-950 font-sans text-white flex flex-col justify-between selection:bg-pink-500 selection:text-white overflow-x-hidden">
-
-    <!-- Header / Navigation -->
-    <header class="w-full py-4 px-6 md:px-12 flex justify-between items-center bg-black/30 backdrop-blur-md border-b border-white/10 z-50">
-        <div class="flex items-center gap-2 cursor-pointer" onclick="goToPage(1)">
-            <svg class="w-6 h-6 text-pink-400 animate-pulse" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
-            <span class="font-bold text-lg md:text-xl tracking-wider bg-gradient-to-r from-pink-400 via-purple-300 to-indigo-400 bg-clip-text text-transparent">
-                HBD BUDDY 🎉
+<!-- ... existing code ... -->
+    <!-- Navigation Header -->
+    <header class="w-full py-4 px-6 md:px-12 flex justify-between items-center bg-slate-950/40 backdrop-blur-xl border-b border-white/10 z-50 sticky top-0">
+        <div class="flex items-center gap-3 cursor-pointer group" onclick="goToPage(1)">
+            <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-pink-500 to-purple-600 flex items-center justify-center shadow-lg shadow-pink-500/30 group-hover:scale-105 transition-transform">
+                <svg class="w-5 h-5 text-white animate-pulse" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
+            </div>
+            <span class="font-extrabold text-lg md:text-xl tracking-wider bg-gradient-to-r from-pink-400 via-purple-300 to-indigo-400 bg-clip-text text-transparent">
+                TRITIKA'S DAY ✨
             </span>
         </div>
-        <!-- Page Indicator Buttons -->
-        <div class="flex gap-2" id="nav-dots">
-            <button onclick="goToPage(1)" class="page-dot w-8 h-8 rounded-full text-xs font-bold transition-all duration-300 bg-gradient-to-r from-pink-500 to-purple-600 text-white shadow-lg shadow-pink-500/50 scale-110">1</button>
-            <button onclick="goToPage(2)" class="page-dot w-8 h-8 rounded-full text-xs font-bold transition-all duration-300 bg-white/10 text-white/70 hover:bg-white/20">2</button>
-            <button onclick="goToPage(3)" class="page-dot w-8 h-8 rounded-full text-xs font-bold transition-all duration-300 bg-white/10 text-white/70 hover:bg-white/20">3</button>
-            <button onclick="goToPage(4)" class="page-dot w-8 h-8 rounded-full text-xs font-bold transition-all duration-300 bg-white/10 text-white/70 hover:bg-white/20">4</button>
-            <button onclick="goToPage(5)" class="page-dot w-8 h-8 rounded-full text-xs font-bold transition-all duration-300 bg-white/10 text-white/70 hover:bg-white/20">5</button>
+
+        <!-- Music Toggle & Page Indicator Numbers -->
+        <div class="flex items-center gap-4">
+            <button onclick="toggleMusic()" id="music-btn" class="flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold bg-pink-500/20 text-pink-300 border border-pink-500/30 hover:bg-pink-500/30 transition shadow-md cursor-pointer">
+                <span id="music-icon">🎵</span> <span id="music-text">Play Music</span>
+            </button>
+            <div class="hidden sm:flex items-center gap-2 bg-white/5 border border-white/10 p-1.5 rounded-full backdrop-blur-md">
+                <button onclick="goToPage(1)" class="page-dot w-8 h-8 rounded-full text-xs font-bold transition-all duration-300 bg-gradient-to-r from-pink-500 to-purple-600 text-white shadow-md shadow-pink-500/40 scale-105">1</button>
+                <button onclick="goToPage(2)" class="page-dot w-8 h-8 rounded-full text-xs font-bold transition-all duration-300 text-slate-400 hover:text-white hover:bg-white/10">2</button>
+                <button onclick="goToPage(3)" class="page-dot w-8 h-8 rounded-full text-xs font-bold transition-all duration-300 text-slate-400 hover:text-white hover:bg-white/10">3</button>
+                <button onclick="goToPage(4)" class="page-dot w-8 h-8 rounded-full text-xs font-bold transition-all duration-300 text-slate-400 hover:text-white hover:bg-white/10">4</button>
+                <button onclick="goToPage(5)" class="page-dot w-8 h-8 rounded-full text-xs font-bold transition-all duration-300 text-slate-400 hover:text-white hover:bg-white/10">5</button>
+                <button onclick="goToPage(6)" class="page-dot w-8 h-8 rounded-full text-xs font-bold transition-all duration-300 text-slate-400 hover:text-white hover:bg-white/10">6</button>
+            </div>
         </div>
     </header>
 
     <!-- Main Content Container -->
-    <main class="flex-grow flex items-center justify-center p-6 md:p-12 relative">
+    <main class="flex-grow flex items-center justify-center p-6 md:p-12 relative z-10">
 
-        <!-- PAGE 1: Grand Entry -->
-        <div id="page-1" class="page-content max-w-3xl w-full text-center space-y-6 animate-fadeIn bg-gradient-to-br from-purple-900/40 via-black/60 to-pink-900/40 p-8 md:p-14 rounded-3xl border border-white/15 backdrop-blur-xl shadow-2xl">
-            <span class="px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-widest bg-pink-500/20 text-pink-300 border border-pink-500/30 inline-block">
-                Special Celebration Portal 🌟
-            </span>
-            <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight leading-tight">
+        <!-- PAGE 1: Grand Welcome Entry -->
+        <div id="page-1" class="page-view max-w-3xl w-full text-center space-y-8 glass-card p-8 md:p-16 rounded-3xl animate-float-slow">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest bg-pink-500/10 text-pink-400 border border-pink-500/30 shadow-inner">
+                <span class="w-2 h-2 rounded-full bg-pink-500 animate-ping"></span>
+                Special Birthday Portal for Tritika 🌟
+            </div>
+            
+            <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight leading-none">
                 Happy Birthday <br />
-                <span class="bg-gradient-to-r from-pink-400 via-red-400 to-yellow-300 bg-clip-text text-transparent">
-                    My Friend! 🎂
+                <span class="bg-gradient-to-r from-pink-400 via-purple-300 to-amber-300 bg-clip-text text-transparent drop-shadow-sm">
+                    Tritika! 🎉
                 </span>
             </h1>
-            <p class="text-gray-300 text-base md:text-lg max-w-xl mx-auto">
-                Get ready for an awesome multi-page surprise crafted just for your special day. Let's make this unforgettable!
+
+            <p class="text-slate-300 text-base md:text-xl max-w-xl mx-auto font-normal leading-relaxed">
+                Step into an immersive multi-page celebration crafted exclusively for your special day. Let's make this unforgettable!
             </p>
+
             <div class="pt-4">
-                <button onclick="nextPage()" class="group inline-flex items-center gap-3 px-8 py-4 rounded-full font-bold text-base bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white shadow-xl shadow-pink-600/40 transition-all duration-300 transform hover:scale-105 cursor-pointer">
+                <button onclick="nextPage(); fireMiniConfetti();" class="group inline-flex items-center gap-3 px-8 py-4 rounded-full font-bold text-base bg-gradient-to-r from-pink-500 via-purple-600 to-indigo-600 hover:opacity-95 text-white shadow-xl shadow-pink-600/30 transition-all duration-300 transform hover:scale-105 cursor-pointer">
                     Start Celebration 
-                    <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+                    <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
                 </button>
             </div>
         </div>
 
-        <!-- PAGE 2: Celebration Vibe & Quotes -->
-        <div id="page-2" class="page-content hidden max-w-3xl w-full space-y-6 animate-fadeIn bg-gradient-to-br from-blue-950/50 via-black/60 to-purple-950/50 p-8 md:p-14 rounded-3xl border border-white/15 backdrop-blur-xl shadow-2xl text-center">
-            <svg class="w-12 h-12 text-blue-400 mx-auto animate-bounce" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
-            <h2 class="text-3xl md:text-5xl font-bold tracking-tight">Cheers to Another Year!</h2>
-            <div class="bg-white/5 border border-white/10 p-6 rounded-2xl max-w-xl mx-auto shadow-inner">
-                <p class="text-gray-200 text-lg italic">
-                    "May your day be filled with happiness, laughter, and all the things you love the most. Here's to lifelong friendship and countless more amazing memories!"
+        <!-- PAGE 2: Virtual Birthday Cake Cutting Slide -->
+        <div id="page-2" class="page-view hidden max-w-3xl w-full space-y-6 glass-card p-8 md:p-14 rounded-3xl text-center">
+            <div class="w-16 h-16 rounded-2xl bg-amber-500/20 border border-amber-500/30 flex items-center justify-center mx-auto text-amber-400 shadow-lg animate-bounce">
+                🎂
+            </div>
+
+            <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight">Time to Cut the Cake! 🍰</h2>
+            
+            <div class="bg-white/5 border border-white/10 p-8 rounded-2xl max-w-lg mx-auto shadow-inner relative overflow-hidden">
+                <div id="cake-display" class="text-7xl md:text-8xl py-4 transition-transform duration-500 select-none">
+                    🎂✨
+                </div>
+                <p id="cake-status" class="text-slate-200 text-base md:text-lg font-medium mt-2">
+                    Candles are glowing bright! Click below to cut the cake & make a wish! 🕯️
                 </p>
             </div>
-            <p class="text-sm text-pink-300 font-medium">✨ Wishing you endless success and joy ahead!</p>
+
+            <div class="pt-2">
+                <button id="cut-cake-btn" onclick="cutTheCake()" class="px-8 py-3.5 rounded-full font-bold text-sm bg-gradient-to-r from-amber-400 to-pink-500 text-slate-950 hover:opacity-90 shadow-lg shadow-amber-500/30 transition-all transform hover:scale-105 cursor-pointer">
+                    Cut Virtual Cake 🔪✨
+                </button>
+            </div>
         </div>
 
-        <!-- PAGE 3: Memory Lane -->
-        <div id="page-3" class="page-content hidden max-w-4xl w-full space-y-6 animate-fadeIn bg-gradient-to-br from-amber-950/40 via-black/60 to-rose-950/40 p-8 md:p-12 rounded-3xl border border-white/15 backdrop-blur-xl shadow-2xl text-center">
-            <svg class="w-12 h-12 text-amber-400 mx-auto" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-            <h2 class="text-3xl md:text-4xl font-bold">The Memory Lane 📸</h2>
-            <p class="text-gray-300 text-sm md:text-base">Moments that made our friendship legendary.</p>
+        <!-- PAGE 3: Celebration Vibe & Quotes -->
+        <div id="page-3" class="page-view hidden max-w-3xl w-full space-y-8 glass-card p-8 md:p-16 rounded-3xl text-center">
+            <div class="w-16 h-16 rounded-2xl bg-blue-500/20 border border-blue-500/30 flex items-center justify-center mx-auto text-blue-400 shadow-lg animate-bounce">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/></svg>
+            </div>
+
+            <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight">Cheers to Another Great Year! 🥂</h2>
             
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
-                <div class="bg-white/5 border border-white/10 p-5 rounded-2xl hover:bg-white/10 transition">
-                    <div class="text-3xl mb-2">🚀</div>
-                    <h3 class="font-bold text-white mb-1">Late Night Talks</h3>
-                    <p class="text-xs text-gray-400">Solving world problems at 3 AM.</p>
+            <div class="bg-white/5 border border-white/10 p-8 rounded-2xl max-w-xl mx-auto shadow-inner relative overflow-hidden">
+                <div class="absolute -top-10 -right-10 w-32 h-32 bg-blue-500/10 rounded-full blur-xl"></div>
+                <p class="text-slate-200 text-lg md:text-xl italic font-medium leading-relaxed">
+                    "May your day be filled with boundless joy, radiant sunshine, and all the success you truly deserve. Keep shining brightly wherever you go!"
+                </p>
+            </div>
+            
+            <p class="text-sm text-pink-400 font-semibold tracking-wide uppercase">✨ Wishing you an absolute blockbuster year ahead!</p>
+        </div>
+
+        <!-- PAGE 4: Customized specifically for Tritika -->
+        <div id="page-4" class="page-view hidden max-w-4xl w-full space-y-8 glass-card p-8 md:p-14 rounded-3xl text-center">
+            <div class="w-16 h-16 rounded-2xl bg-gradient-to-tr from-pink-500 to-purple-600 flex items-center justify-center mx-auto text-white shadow-xl shadow-pink-500/40 animate-pulse">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
+            </div>
+
+            <div class="space-y-2">
+                <h2 class="text-3xl md:text-5xl font-black bg-gradient-to-r from-pink-400 via-purple-300 to-amber-300 bg-clip-text text-transparent">
+                    Happy Birthday Tritika! ✨
+                </h2>
+                <p class="text-slate-300 text-base md:text-lg">Celebrating the fabulous energy, charm, and grace you bring into everyone's life.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-2">
+                <div class="bg-white/5 border border-white/10 p-6 rounded-2xl hover:bg-white/10 transition-all duration-300 transform hover:-translate-y-1 shadow-md">
+                    <div class="text-4xl mb-3">👑</div>
+                    <h3 class="font-bold text-white text-lg mb-1">Queen of Smiles</h3>
+                    <p class="text-xs text-slate-400 leading-relaxed">Your cheerful vibe and positive attitude can brighten the gloomiest day instantly.</p>
                 </div>
-                <div class="bg-white/5 border border-white/10 p-5 rounded-2xl hover:bg-white/10 transition">
-                    <div class="text-3xl mb-2">🍕</div>
-                    <h3 class="font-bold text-white mb-1">Foodie Adventures</h3>
-                    <p class="text-xs text-gray-400">Exploring every food joint in town.</p>
+                <div class="bg-white/5 border border-white/10 p-6 rounded-2xl hover:bg-white/10 transition-all duration-300 transform hover:-translate-y-1 shadow-md">
+                    <div class="text-4xl mb-3">💫</div>
+                    <h3 class="font-bold text-white text-lg mb-1">Limitless Goals</h3>
+                    <p class="text-xs text-slate-400 leading-relaxed">May every ambitious dream you chase turn into a grand reality this year.</p>
                 </div>
-                <div class="bg-white/5 border border-white/10 p-5 rounded-2xl hover:bg-white/10 transition">
-                    <div class="text-3xl mb-2">🔥</div>
-                    <h3 class="font-bold text-white mb-1">Epic Hangouts</h3>
-                    <p class="text-xs text-gray-400">Unfiltered laughs & good vibes.</p>
+                <div class="bg-white/5 border border-white/10 p-6 rounded-2xl hover:bg-white/10 transition-all duration-300 transform hover:-translate-y-1 shadow-md">
+                    <div class="text-4xl mb-3">🌸</div>
+                    <h3 class="font-bold text-white text-lg mb-1">Pure Elegance</h3>
+                    <p class="text-xs text-slate-400 leading-relaxed">A wonderful blend of kindness, intelligence, and unmatched charisma.</p>
                 </div>
             </div>
         </div>
 
-        <!-- PAGE 4: Why You're Awesome -->
-        <div id="page-4" class="page-content hidden max-w-4xl w-full space-y-6 animate-fadeIn bg-gradient-to-br from-emerald-950/40 via-black/60 to-teal-950/40 p-8 md:p-12 rounded-3xl border border-white/15 backdrop-blur-xl shadow-2xl text-center">
-            <svg class="w-12 h-12 text-emerald-400 mx-auto" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
-            <h2 class="text-3xl md:text-4xl font-bold">Why You're Awesome ⭐</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-left pt-2">
-                <div class="bg-white/5 border border-white/10 p-5 rounded-2xl">
-                    <h3 class="font-bold text-emerald-300 mb-1">👑 Always Reliable</h3>
-                    <p class="text-xs text-gray-300">A true friend who always has everyone's back no matter what.</p>
+        <!-- PAGE 5: Why You're Awesome -->
+        <div id="page-5" class="page-view hidden max-w-4xl w-full space-y-8 glass-card p-8 md:p-14 rounded-3xl text-center">
+            <div class="w-16 h-16 rounded-2xl bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center mx-auto text-emerald-400 shadow-lg">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
+            </div>
+
+            <div class="space-y-2">
+                <h2 class="text-3xl md:text-4xl font-extrabold">Why You're Awesome ⭐</h2>
+                <p class="text-slate-400 text-sm md:text-base">Special traits and qualities that make Tritika truly one of a kind.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 text-left pt-2">
+                <div class="bg-white/5 border border-white/10 p-6 rounded-2xl flex items-start gap-4 hover:border-emerald-500/40 transition">
+                    <div class="text-3xl bg-emerald-500/10 p-3 rounded-xl">💖</div>
+                    <div>
+                        <h3 class="font-bold text-emerald-300 text-base mb-1">Incomparable Kindness</h3>
+                        <p class="text-xs text-slate-300 leading-relaxed">Always considerate, caring, and ready to support friends with a warm heart.</p>
+                    </div>
                 </div>
-                <div class="bg-white/5 border border-white/10 p-5 rounded-2xl">
-                    <h3 class="font-bold text-emerald-300 mb-1">😂 Absolute Vibe</h3>
-                    <p class="text-xs text-gray-300">Your energy instantly lights up any boring room.</p>
+                <div class="bg-white/5 border border-white/10 p-6 rounded-2xl flex items-start gap-4 hover:border-emerald-500/40 transition">
+                    <div class="text-3xl bg-emerald-500/10 p-3 rounded-xl">🚀</div>
+                    <div>
+                        <h3 class="font-bold text-emerald-300 text-base mb-1">Unstoppable Vibe</h3>
+                        <p class="text-xs text-slate-300 leading-relaxed">Your spirited enthusiasm and wonderful humor make every moment memorable.</p>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- PAGE 5: Final Grand Birthday Wish -->
-        <div id="page-5" class="page-content hidden max-w-3xl w-full space-y-6 animate-fadeIn bg-gradient-to-br from-pink-950/50 via-black/60 to-purple-950/50 p-8 md:p-14 rounded-3xl border border-pink-500/30 backdrop-blur-xl shadow-2xl text-center">
-            <svg class="w-14 h-14 text-pink-500 mx-auto animate-pulse fill-pink-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
-            <h1 class="text-4xl md:text-6xl font-black tracking-tight bg-gradient-to-r from-pink-400 via-red-400 to-yellow-300 bg-clip-text text-transparent">
-                Happy Birthday My Friend! 🎉
+        <!-- PAGE 6: Final Grand Birthday Bash -->
+        <div id="page-6" class="page-view hidden max-w-3xl w-full space-y-8 glass-card p-8 md:p-16 rounded-3xl text-center border-pink-500/30">
+            <div class="w-20 h-20 rounded-3xl bg-gradient-to-tr from-pink-500 to-purple-600 flex items-center justify-center mx-auto text-white shadow-2xl shadow-pink-500/50 animate-pulse">
+                <svg class="w-10 h-10 fill-white" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+            </div>
+
+            <h1 class="text-4xl sm:text-6xl font-black tracking-tight bg-gradient-to-r from-pink-400 via-red-400 to-yellow-300 bg-clip-text text-transparent leading-tight">
+                Happy Birthday Tritika! 🎉
             </h1>
-            <p class="text-gray-200 text-lg">
-                May this year bring you massive success, happiness, and all your dream achievements. Have an absolute blast today! 🥂✨
+
+            <p class="text-slate-200 text-lg md:text-xl max-w-xl mx-auto font-medium leading-relaxed">
+                May this year unlock massive success, unbelievable happiness, and all your biggest dream goals. Have an absolute blast today! 🥂✨
             </p>
-            <div class="pt-4 flex justify-center gap-4">
-                <button onclick="triggerConfetti()" class="px-8 py-4 rounded-full font-bold text-base bg-gradient-to-r from-yellow-400 to-pink-500 text-black hover:opacity-90 shadow-xl shadow-yellow-500/30 transition-all transform hover:scale-105 cursor-pointer">
-                    Celebrate Now 🎊
+
+            <div class="pt-4 flex flex-col sm:flex-row justify-center gap-4">
+                <button onclick="fireGrandConfetti()" class="px-8 py-4 rounded-full font-extrabold text-base bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-600 text-slate-950 hover:opacity-95 shadow-xl shadow-yellow-500/30 transition-all transform hover:scale-105 cursor-pointer">
+                    Trigger Grand Confetti 🎊
+                </button>
+                <button onclick="goToPage(1)" class="px-6 py-4 rounded-full font-semibold text-sm bg-white/10 hover:bg-white/20 text-white transition-all cursor-pointer">
+                    Restart Experience ↺
                 </button>
             </div>
         </div>
@@ -133,43 +185,112 @@
     </main>
 
     <!-- Footer Controls -->
-    <footer class="w-full py-6 px-8 flex justify-between items-center bg-black/30 backdrop-blur-md border-t border-white/10 z-50">
-        <button id="prev-btn" onclick="prevPage()" class="flex items-center gap-2 px-5 py-2.5 rounded-full font-semibold text-sm opacity-30 cursor-not-allowed bg-white/5 text-gray-500 transition">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg> Previous
+    <footer class="w-full py-5 px-6 md:px-12 flex justify-between items-center bg-slate-950/40 backdrop-blur-xl border-t border-white/10 z-50">
+        <button id="prev-btn" onclick="prevPage()" class="flex items-center gap-2 px-5 py-2.5 rounded-full font-semibold text-sm opacity-30 cursor-not-allowed bg-white/5 text-slate-500 transition-all">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg> Previous
         </button>
 
-        <span id="page-indicator" class="text-xs text-gray-400 tracking-wider">
-            Page 1 of 5
+        <span id="page-indicator" class="text-xs font-bold text-slate-400 tracking-wider uppercase">
+            Page 1 of 6
         </span>
 
-        <button id="next-btn" onclick="nextPage()" class="flex items-center gap-2 px-5 py-2.5 rounded-full font-semibold text-sm bg-gradient-to-r from-pink-500 to-purple-600 hover:opacity-90 text-white cursor-pointer shadow-lg shadow-pink-500/30 transition">
-            Next <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+        <button id="next-btn" onclick="nextPage(); fireMiniConfetti();" class="flex items-center gap-2 px-5 py-2.5 rounded-full font-semibold text-sm bg-gradient-to-r from-pink-500 to-purple-600 hover:opacity-90 text-white cursor-pointer shadow-lg shadow-pink-500/30 transition-all">
+            Next <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
         </button>
     </footer>
 
-    <!-- JavaScript Navigation & Interaction Logic -->
+    <!-- Background Audio Element (Happy Birthday Instrumental Loop) -->
+    <audio id="bg-audio" loop>
+        <source src="https://actions.google.com/sounds/v1/ambiences/birthday_party.ogg" type="audio/ogg">
+        <source src="https://cdn.pixabay.com/download/audio/2022/10/14/audio_9939f792cb.mp3?filename=happy-birthday-jazz-version-120610.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- JavaScript Application Logic -->
     <script>
         let currentPage = 1;
-        const totalPages = 5;
+        const totalPages = 6;
+        let isMusicPlaying = false;
+
+        function toggleMusic() {
+            const audio = document.getElementById('bg-audio');
+            const musicText = document.getElementById('music-text');
+            const musicIcon = document.getElementById('music-icon');
+            const musicBtn = document.getElementById('music-btn');
+
+            if (isMusicPlaying) {
+                audio.pause();
+                isMusicPlaying = false;
+                musicText.innerText = "Play Music";
+                musicIcon.innerText = "🎵";
+                musicBtn.className = "flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold bg-pink-500/20 text-pink-300 border border-pink-500/35 hover:bg-pink-500/30 transition shadow-md cursor-pointer";
+            } else {
+                audio.play().then(() => {
+                    isMusicPlaying = true;
+                    musicText.innerText = "Pause Music";
+                    musicIcon.innerText = "🎶";
+                    musicBtn.className = "flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/35 hover:bg-emerald-500/30 transition shadow-md cursor-pointer animate-pulse";
+                }).catch(e => {
+                    console.log("Audio playback blocked by browser policy until user interaction.", e);
+                    alert("Please interact with the page first to enable music playback!");
+                });
+            }
+        }
+
+        function cutTheCake() {
+            const cakeDisplay = document.getElementById('cake-display');
+            const cakeStatus = document.getElementById('cake-status');
+            const cutBtn = document.getElementById('cut-cake-btn');
+
+            cakeDisplay.innerHTML = "🎂 ✂️ 🍰";
+            cakeDisplay.classList.add('scale-110');
+            cakeStatus.innerText = "🎉 Yay! The cake is cut! Delicious slices served with loads of love and best wishes! 🎈";
+            cutBtn.innerText = "Cake Cut Successfully! 🥳";
+            cutBtn.disabled = true;
+            cutBtn.className = "px-8 py-3.5 rounded-full font-bold text-sm bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 cursor-default shadow-lg";
+
+            fireGrandConfetti();
+        }
+
+        // Generate dynamic background particles
+        function initParticles() {
+            const container = document.getElementById('particles-container');
+            const particleCount = 20;
+            for (let i = 0; i < particleCount; i++) {
+                const p = document.createElement('div');
+                p.className = 'absolute rounded-full bg-white/20 animate-float-slow';
+                const size = Math.random() * 6 + 2;
+                p.style.width = `${size}px`;
+                p.style.height = `${size}px`;
+                p.style.top = `${Math.random() * 100}%`;
+                p.style.left = `${Math.random() * 100}%`;
+                p.style.animationDuration = `${Math.random() * 5 + 5}s`;
+                p.style.animationDelay = `${Math.random() * 3}s`;
+                container.appendChild(p);
+            }
+        }
 
         function updateView() {
             // Hide all pages
             for (let i = 1; i <= totalPages; i++) {
-                document.getElementById(`page-${i}`).classList.add('hidden');
+                const pageEl = document.getElementById(`page-${i}`);
+                if(pageEl) pageEl.classList.add('hidden');
             }
+
             // Show current page
-            document.getElementById(`page-${currentPage}`).classList.remove('hidden');
+            const activePage = document.getElementById(`page-${currentPage}`);
+            if(activePage) activePage.classList.remove('hidden');
 
             // Update page indicator text
-            document.getElementById('page-indicator').innerText = `Page ${currentPage} of ${totalPages}`;
+            const indicator = document.getElementById('page-indicator');
+            if(indicator) indicator.innerText = `Page ${currentPage} of ${totalPages}`;
 
             // Update navigation dots styling
             const dots = document.querySelectorAll('.page-dot');
             dots.forEach((dot, index) => {
                 if (index + 1 === currentPage) {
-                    dot.className = "page-dot w-8 h-8 rounded-full text-xs font-bold transition-all duration-300 bg-gradient-to-r from-pink-500 to-purple-600 text-white shadow-lg shadow-pink-500/50 scale-110";
+                    dot.className = "page-dot w-8 h-8 rounded-full text-xs font-bold transition-all duration-300 bg-gradient-to-r from-pink-500 to-purple-600 text-white shadow-md shadow-pink-500/40 scale-105";
                 } else {
-                    dot.className = "page-dot w-8 h-8 rounded-full text-xs font-bold transition-all duration-300 bg-white/10 text-white/70 hover:bg-white/20";
+                    dot.className = "page-dot w-8 h-8 rounded-full text-xs font-bold transition-all duration-300 text-slate-400 hover:text-white hover:bg-white/10";
                 }
             });
 
@@ -178,16 +299,18 @@
             const nextBtn = document.getElementById('next-btn');
 
             if (currentPage === 1) {
-                prevBtn.className = "flex items-center gap-2 px-5 py-2.5 rounded-full font-semibold text-sm opacity-30 cursor-not-allowed bg-white/5 text-gray-500 transition";
+                prevBtn.className = "flex items-center gap-2 px-5 py-2.5 rounded-full font-semibold text-sm opacity-30 cursor-not-allowed bg-white/5 text-slate-500 transition-all";
             } else {
-                prevBtn.className = "flex items-center gap-2 px-5 py-2.5 rounded-full font-semibold text-sm bg-white/10 hover:bg-white/20 text-white cursor-pointer transition";
+                prevBtn.className = "flex items-center gap-2 px-5 py-2.5 rounded-full font-semibold text-sm bg-white/10 hover:bg-white/20 text-white cursor-pointer transition-all";
             }
 
             if (currentPage === totalPages) {
-                nextBtn.className = "flex items-center gap-2 px-5 py-2.5 rounded-full font-semibold text-sm opacity-30 cursor-not-allowed bg-white/5 text-gray-500 transition";
+                nextBtn.className = "flex items-center gap-2 px-5 py-2.5 rounded-full font-semibold text-sm opacity-30 cursor-not-allowed bg-white/5 text-slate-500 transition-all";
             } else {
-                nextBtn.className = "flex items-center gap-2 px-5 py-2.5 rounded-full font-semibold text-sm bg-gradient-to-r from-pink-500 to-purple-600 hover:opacity-90 text-white cursor-pointer shadow-lg shadow-pink-500/30 transition";
+                nextBtn.className = "flex items-center gap-2 px-5 py-2.5 rounded-full font-semibold text-sm bg-gradient-to-r from-pink-500 to-purple-600 hover:opacity-90 text-white cursor-pointer shadow-lg shadow-pink-500/30 transition-all";
             }
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function nextPage() {
@@ -209,9 +332,44 @@
             updateView();
         }
 
-        function triggerConfetti() {
-            alert("🎉 Awesome! Wishing your friend the happiest birthday ever! 🎂✨🎈");
+        function fireMiniConfetti() {
+            confetti({
+                particleCount: 50,
+                spread: 60,
+                origin: { y: 0.8 }
+            });
+        }
+
+        function fireGrandConfetti() {
+            var duration = 3 * 1000;
+            var end = Date.now() + duration;
+
+            (function frame() {
+                confetti({
+                    particleCount: 4,
+                    angle: 60,
+                    spread: 55,
+                    origin: { x: 0 }
+                });
+                confetti({
+                    particleCount: 4,
+                    angle: 120,
+                    spread: 55,
+                    origin: { x: 1 }
+                });
+
+                if (Date.now() < end) {
+                    requestAnimationFrame(frame);
+                }
+            }());
+        }
+
+        // Initialize on window load
+        window.onload = function() {
+            initParticles();
+            updateView();
         }
     </script>
 </body>
 </html>
+```eof
